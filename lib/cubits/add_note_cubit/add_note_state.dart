@@ -1,6 +1,6 @@
 
-part of 'add_note_cubit.dart';
 
+import'package:flutter/material.dart';
 
 @immutable
 abstract class AddNoteState {}

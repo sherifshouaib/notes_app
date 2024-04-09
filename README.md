@@ -1,16 +1,4 @@
 # notes_app
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![notes_app_page1](https://github.com/sherifshouaib/notes_app/assets/67573195/8fec2b19-e6fc-4e17-ba28-7e7cdba25e53)
+![notes_app_page2](https://github.com/sherifshouaib/notes_app/assets/67573195/0b213658-1317-433d-9ff5-3f2cf89f86a0)

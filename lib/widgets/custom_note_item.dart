@@ -17,7 +17,9 @@ class NoteItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return  EditNoteView(note: note,);
+              return EditNoteView(
+                note: note,
+              );
             },
           ),
         );
@@ -50,8 +52,8 @@ class NoteItem extends StatelessWidget {
                 ),
                 child: Text(
                   note.subTitle,
-                  style: TextStyle(
-                      color: Colors.black.withOpacity(0.5), fontSize: 18),
+                  style:
+                      TextStyle(color: Colors.black.withValues(), fontSize: 18),
                 ),
               ),
               trailing: IconButton(
@@ -60,7 +62,7 @@ class NoteItem extends StatelessWidget {
 
                   BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 },
-                icon: Icon(
+                icon: const Icon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,
                   size: 24,
@@ -71,8 +73,8 @@ class NoteItem extends StatelessWidget {
               padding: const EdgeInsets.only(right: 24),
               child: Text(
                 note.date,
-                style: TextStyle(
-                    color: Colors.black.withOpacity(0.4), fontSize: 16),
+                style:
+                    TextStyle(color: Colors.black.withValues(), fontSize: 16),
               ),
             ),
           ],

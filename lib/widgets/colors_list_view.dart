@@ -1,28 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/constants.dart';
+import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 
-class ColorItem extends StatelessWidget {
-  const ColorItem({super.key, required this.isActive, required this.color});
+import 'color_item.dart';
 
-  final bool isActive;
 
-  final Color color;
-  @override
-  Widget build(BuildContext context) {
-    return isActive
-        ?  CircleAvatar(
-            radius: 38,
-            backgroundColor: Colors.white,
-            child: CircleAvatar(
-              radius: 34,
-              backgroundColor: color,
-            ),
-          )
-        :  CircleAvatar(
-            radius: 38,
-            backgroundColor: color,
-          );
-  }
-}
 
 class ColorsListView extends StatefulWidget {
   const ColorsListView({super.key});
@@ -34,19 +17,13 @@ class ColorsListView extends StatefulWidget {
 class _ColorsListViewState extends State<ColorsListView> {
   int currentIndex = 0;
 
-  List<Color> colors = const [
-    Color(0xffb8b42d),
-    Color(0xffb4e1ff),
-    Color(0xffab87ff),
-    Color(0xfffface4),
-    Color(0xff9e6240),
-  ];
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 38 * 2,
       child: ListView.builder(
-        itemCount: colors.length,
+        itemCount: kColors.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
@@ -54,10 +31,12 @@ class _ColorsListViewState extends State<ColorsListView> {
             child: GestureDetector(
               onTap: () {
                 currentIndex = index;
+
+                BlocProvider.of<AddNoteCubit>(context).color = kColors[index];
                 setState(() {});
               },
               child: ColorItem(
-                color: colors[index],
+                color: kColors[index],
                 isActive: currentIndex == index,
               ),
             ),

@@ -1,0 +1,23 @@
+
+{
+
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Easy Notes Development",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_development.dart",
+            "args": ["--flavor", "development"]
+
+        },
+        {
+            "name": "Easy Notes Production",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main_production.dart",
+            "args": ["--flavor", "production"]
+
+        }
+    ]
+}

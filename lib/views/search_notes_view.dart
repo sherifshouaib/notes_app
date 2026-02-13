@@ -17,6 +17,28 @@ class _SearchNotesViewState extends State<SearchNotesView> {
   List<NoteModel> filteredNotes = [];
   var notesBox = Hive.box<NoteModel>(kNotesBox);
 
+// ====== ADDED CODE START ======
+  final TextEditingController _controller = TextEditingController();
+  // ====== ADDED CODE END ======
+
+// ====== ADDED CODE START ======
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(() {
+      setState(() {});
+    });
+  }
+// ====== ADDED CODE END ======
+
+  @override
+  void dispose() {
+    // ====== ADDED CODE START ======
+    _controller.dispose();
+    // ====== ADDED CODE END ======
+    super.dispose();
+  }
+
   void searchNotes(String query) {
     final allNotes = notesBox.values.toList();
 
@@ -50,6 +72,9 @@ class _SearchNotesViewState extends State<SearchNotesView> {
           child: AppBar(
             automaticallyImplyLeading: false,
             title: TextField(
+              // ====== ADDED CODE START ======
+              controller: _controller,
+              // ====== ADDED CODE END ======
               autofocus: true,
               decoration: const InputDecoration(
                 hintText: 'Search notes...',
@@ -58,14 +83,23 @@ class _SearchNotesViewState extends State<SearchNotesView> {
               onChanged: searchNotes,
             ),
             actions: [
-              CustomIcon(
-                icon: Icons.close,
-                onPressed: () {
-                  setState(() {
+              // ====== ADDED CODE START ======
+              if (_controller.text.isNotEmpty)
+                CustomIcon(
+                  icon: Icons.close,
+                  onPressed: () {
+                    _controller.clear();
+                    searchNotes("");
+                  },
+                )
+              else
+                CustomIcon(
+                  icon: Icons.arrow_back,
+                  onPressed: () {
                     Navigator.pop(context);
-                  });
-                },
-              ),
+                  },
+                ),
+              // ====== ADDED CODE END ======
             ],
           ),
         ),

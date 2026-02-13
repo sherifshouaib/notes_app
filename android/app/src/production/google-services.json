@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "740380868295",
+    "project_id": "fir-crashlytics-easynotes",
+    "storage_bucket": "fir-crashlytics-easynotes.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740380868295:android:c7153b3782aaa8ea9988e2",
+        "android_client_info": {
+          "package_name": "com.sherifshouaib.easynotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW08cZuEBL0NxIzOu80yAmkXL7yq9sJH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740380868295:android:1e4bf5b90b72b71d9988e2",
+        "android_client_info": {
+          "package_name": "com.sherifshouaib.easynotes.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW08cZuEBL0NxIzOu80yAmkXL7yq9sJH4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

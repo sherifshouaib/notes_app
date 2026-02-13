@@ -20,6 +20,9 @@ class AddNoteButton extends StatelessWidget {
             return const AddNoteBottomSheet();
           },
         );
+        // i know there is no exception here ,but we throw exception here
+        //to show it on firebase crashlytics dashboard
+        //throw Exception();
       },
       backgroundColor: const Color(0xff56EFDB),
       child: const Icon(

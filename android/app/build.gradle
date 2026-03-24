@@ -3,12 +3,14 @@ import java.io.FileInputStream
 
 plugins {
     id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    id "dev.flutter.flutter-gradle-plugin"
     // START: FlutterFire Configuration
     id 'com.google.gms.google-services'
     id 'com.google.firebase.crashlytics'
     // END: FlutterFire Configuration
-    id "kotlin-android"
-    id "dev.flutter.flutter-gradle-plugin"
+   // id "kotlin-android"
+
 }
 
 def localProperties = new Properties()
@@ -62,6 +64,17 @@ android {
         main.java.srcDirs += 'src/main/kotlin'
     }
 
+   packaging {
+    jniLibs {
+        useLegacyPackaging = false
+        }
+    }
+
+    bundle {
+        abi {
+            enableSplit = true
+        }
+    }
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId "com.sherifshouaib.easynotes"
@@ -87,7 +100,7 @@ productFlavors {
     production {
         dimension "default"
         // مفيش applicationIdSuffix عشان ده النسخة الأساسية
-        resValue "string", "app_name", "Easy Notes Production"
+        resValue "string", "app_name", "Easy Notes"
     }
 }
 

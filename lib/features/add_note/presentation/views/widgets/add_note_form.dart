@@ -11,8 +11,11 @@ import 'package:notes_app/core/widgets/custom_text_field.dart';
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
     super.key,
+    required this.titleController,
+    required this.contentController,
   });
-
+  final TextEditingController titleController;
+  final TextEditingController contentController;
   @override
   State<AddNoteForm> createState() => _AddNoteFormState();
 }
@@ -31,7 +34,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   }
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? title, subTitle;
+  String? title, content;
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -43,8 +46,17 @@ class _AddNoteFormState extends State<AddNoteForm> {
             height: 32,
           ),
           CustomTextField(
+            contentttt: widget.titleController.text,
+            controller: widget.titleController,
             onSaved: (value) {
               title = value;
+            },
+            validate: (value) {
+              if (value?.isEmpty ?? true) {
+                return 'Field is required';
+              } else {
+                return null;
+              }
             },
             hint: 'title',
           ),
@@ -52,8 +64,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
             height: 16,
           ),
           CustomTextField(
+            contentttt: widget.contentController.text,
+            controller: widget.contentController,
             onSaved: (value) {
-              subTitle = value;
+              content = value;
             },
             hint: 'content',
             maxLines: 5,
@@ -77,11 +91,14 @@ class _AddNoteFormState extends State<AddNoteForm> {
                         DateFormat('dd-MM-yyyy').format(currentDate);
                     var noteModel = NoteModel(
                       title: title!,
-                      subTitle: subTitle!,
+                      content: content!,
                       date: formattedCurrentDate,
                       color: Colors.blue.toARGB32(),
                     );
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+                    // 👇 امسح القيم هنا
+                    widget.titleController.clear();
+                    widget.contentController.clear();
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                     setState(() {});

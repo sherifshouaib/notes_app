@@ -11,7 +11,7 @@ class AddNoteCubit extends Cubit<AddNoteState> {
 
 
 Color color= const Color(0xffb8b42d);
-  addNote(NoteModel note) async {
+  Future<void> addNote(NoteModel note) async {
 
 
     note.color=color.toARGB32();

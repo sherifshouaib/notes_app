@@ -1,22 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/core/utils/constants.dart';
 
-class CustomTextField extends StatefulWidget {
-   CustomTextField({
+class CustomTextFieldEdit extends StatefulWidget {
+  const CustomTextFieldEdit({
     super.key,
     required this.hint,
     this.maxLines = 1,
     this.onSaved,
     this.onChanged,
-    this.contentttt ,
-    this.controller,
+    this.contentttt = "",
     this.validate,
   });
 
-  final String hint;
-  String? contentttt;
+  final String hint, contentttt;
   final int maxLines;
-  final TextEditingController? controller;
 
   final Function(String)? onChanged;
 
@@ -24,10 +21,10 @@ class CustomTextField extends StatefulWidget {
   final String? Function(String?)? validate;
 
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  State<CustomTextFieldEdit> createState() => _CustomTextFieldEditState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _CustomTextFieldEditState extends State<CustomTextFieldEdit> {
   late TextEditingController controller;
   TextDirection? textDirection;
   bool _isUserMovingCursor = false;
@@ -67,8 +64,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      controller: widget.controller, // 👈 هنا التعديل
-      //  initialValue: contentttt, // هنا بتملا القيمة الحالية للـ note
+      controller: controller, // 👈 استخدم الـ controller بدل initialValue
+      //  initialValue: widget.contentttt, // هنا بتملا القيمة الحالية للـ note
       onChanged: (value) {
         if (value.isEmpty) {
           // 👈 رجّع للوضع الطبيعي

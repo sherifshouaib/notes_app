@@ -7,7 +7,12 @@ import 'package:notes_app/features/home/presentation/manager/notes_cubit/notes_c
 import 'package:notes_app/features/add_note/presentation/views/widgets/add_note_form.dart';
 
 class AddNoteBottomSheet extends StatelessWidget {
-  const AddNoteBottomSheet({super.key});
+  const AddNoteBottomSheet(
+      {super.key,
+      required this.titleController,
+      required this.contentController});
+  final TextEditingController titleController;
+  final TextEditingController contentController;
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +37,11 @@ class AddNoteBottomSheet extends StatelessWidget {
                     left: 16,
                     right: 16,
                     bottom: MediaQuery.of(context).viewInsets.bottom),
-                child: const SingleChildScrollView(
-                  child: AddNoteForm(),
+                child: SingleChildScrollView(
+                  child: AddNoteForm(
+                    titleController: titleController,
+                    contentController: contentController,
+                  ),
                 ),
               ),
             );

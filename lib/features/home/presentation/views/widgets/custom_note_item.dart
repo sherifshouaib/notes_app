@@ -51,7 +51,7 @@ class NoteItem extends StatelessWidget {
                   bottom: 16,
                 ),
                 child: Text(
-                  note.subTitle,
+                  note.content,
                   style:
                       TextStyle(color: Colors.black.withValues(), fontSize: 18),
                 ),
@@ -62,7 +62,7 @@ class NoteItem extends StatelessWidget {
 
                   BlocProvider.of<NotesCubit>(context).fetchAllNotes();
                 },
-                icon: const Icon(
+                icon: const FaIcon(
                   FontAwesomeIcons.trash,
                   color: Colors.black,
                   size: 24,
